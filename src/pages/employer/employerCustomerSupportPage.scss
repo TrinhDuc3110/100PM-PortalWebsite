@@ -1,0 +1,42 @@
+.employer-page-wrapper {
+  min-height: 100%;
+}
+
+.employer-page-title {
+  font-size: 24px;
+  color: #111827;
+}
+
+.support-card {
+  background: #ffffff;
+  padding: 32px 24px;
+  border-radius: 14px;
+  text-align: center;
+  border: 1px solid #e5e7eb;
+  transition: 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.support-icon {
+  font-size: 38px;
+  color: #3b82f6;
+  margin-bottom: 14px;
+}
+
+.support-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.support-desc {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0;
+}

@@ -1,0 +1,249 @@
+/* ============================= */
+/* SIGN IN — BACKGROUND + BLOBS */
+/* ============================= */
+
+.auth-background {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.auth-content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+}
+
+/* Blob chung */
+.blob {
+  position: absolute;
+  width: 40rem;
+  height: auto;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.95;
+}
+
+/* Blob trên trái */
+.blob-orange-top {
+  top: -8rem;
+  left: -10rem;
+  transform: scale(1.15) rotate(180deg);
+}
+
+/* Blob dưới phải */
+.blob-yellow-bottom {
+  bottom: -8rem;
+  right: -8rem;
+  transform: scale(1.25) rotate(180deg);
+}
+
+/* ============================= */
+/* SIGN IN FORM (AUTH CARD)      */
+/* ============================= */
+
+.auth-card {
+  position: relative;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  width: 100%;
+  max-width: 420px;
+  padding: 10px 0 32px;
+}
+
+/* Logo */
+.logo-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: #2563eb1a;
+  font-size: 18px;
+}
+.logo-icon svg {
+  color: #2563eb;
+}
+
+.logo-text {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+/* Title + subtitle */
+.auth-title {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.auth-subtitle {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.link-login {
+  color: #2563eb;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+/* ============================= */
+/* INPUT FIELDS                  */
+/* ============================= */
+
+.input-soft {
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  padding: 10px 12px;
+}
+
+.input-soft:focus {
+  outline: none;
+  box-shadow: 0 0 0 1px #2563eb33;
+  border-color: #2563eb;
+}
+
+/* Eye icon */
+.btn-eye {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* ============================= */
+/* BUTTON                        */
+/* ============================= */
+
+.auth-primary-btn {
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ============================= */
+/* DIVIDER "OR"                  */
+/* ============================= */
+
+.divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  font-size: 13px;
+  color: #9ca3af;
+  width: 100%;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #e5e7eb;
+}
+
+.divider::before {
+  margin-right: 12px;
+}
+
+.divider::after {
+  margin-left: 12px;
+}
+
+.divider span {
+  background: #ffffff;
+  padding: 0 10px;
+  z-index: 2;
+}
+
+/* ============================= */
+/* SOCIAL BUTTONS                */
+/* ============================= */
+
+.social-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  padding: 8px 10px;
+  font-size: 13px;
+}
+
+/* ============================= */
+/* ILLUSTRATION IMG              */
+/* ============================= */
+
+.auth-illustration {
+  max-width: 430px;
+  width: 100%;
+}
+
+/* ============================= */
+/* RESPONSIVE LAYOUT             */
+/* ============================= */
+
+@media (max-width: 992px) {
+  .blob {
+    width: 32rem;
+  }
+
+  .auth-card {
+    max-width: 100%;
+  }
+
+  .auth-illustration {
+    max-width: 380px;
+  }
+}
+
+@media (max-width: 768px) {
+  .blob {
+    width: 26rem;
+  }
+
+  .auth-card {
+    padding: 12px 0 22px;
+  }
+
+  .auth-title {
+    font-size: 22px;
+  }
+
+  .auth-subtitle {
+    font-size: 13px;
+  }
+
+  .social-btn {
+    padding: 7px 8px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .blob {
+    width: 22rem;
+  }
+
+  .auth-card {
+    padding: 10px 0 20px;
+  }
+
+  .auth-title {
+    font-size: 20px;
+  }
+
+  .auth-subtitle {
+    font-size: 12px;
+  }
+}

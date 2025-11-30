@@ -1,0 +1,23 @@
+.candidate-page {
+  .candidate-title {
+    font-weight: 700;
+    font-size: 28px;
+    color: #080a52;
+  }
+
+  .brand-logo-card {
+    padding: 8px 12px;
+    border-radius: 10px;
+    background: #ffffff; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .brand-logo-img {
+    max-width: 140px;
+    height: 56px;
+    object-fit: contain;
+    display: block;
+  }
+}

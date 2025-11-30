@@ -1,0 +1,280 @@
+
+
+/* ========== SIDEBAR ========== */
+
+.emp-sidebar-wrapper {
+  background: #ffffff;
+  min-height: 100%;
+}
+
+.emp-sidebar {
+  padding: 20px 18px;
+  font-size: 13px;
+}
+
+.emp-sidebar-title {
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: #555;
+  margin-bottom: 18px;
+}
+
+.emp-sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.emp-sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  margin-bottom: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #1d1e23;
+  font-size: 13px;
+
+  &:hover {
+    background: #f3f7ff;
+  }
+}
+
+.emp-sidebar-item.active {
+  background: #e7f0ff;
+}
+
+.emp-icon {
+  font-size: 18px;
+}
+
+
+/* RESPONSIVE: sidebar full-width trên mobile */
+@media (max-width: 767.98px) {
+  .emp-sidebar-wrapper {
+    border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 12px;
+  }
+}
+
+/* ===========================
+   BODY PHẢI (FIGMA)
+=========================== */
+
+.dashboard-wrapper {
+  padding: 24px 32px;
+  background: #ffffff;
+}
+
+.dashboard-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #151823;
+  margin-bottom: 4px;
+}
+
+.dashboard-subtitle {
+  font-size: 13px;
+  color: #8a909b;
+  margin-bottom: 12px;
+}
+
+
+/* ===== CARDS ===== */
+
+.dash-card {
+  position: relative;
+  border-radius: 14px;
+  padding: 20px 22px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dash-blue {
+  background: #eef5ff;
+}
+
+.dash-peach {
+  background: #fff4e6;
+}
+
+.dash-number {
+  font-size: 30px;
+  font-weight: 700;
+  color: #101320;
+}
+
+.dash-label {
+  font-size: 14px;
+  color: #707580;
+  margin-top: 2px;
+}
+
+.dash-icon {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dash-icon-blue {
+  background: #d9e7ff;
+  color: #1c57e2;
+}
+
+.dash-icon-peach {
+  background: #ffe3c4;
+  color: #f29a3d;
+}
+
+
+/* ===== HEADER LIST ===== */
+
+.list-header {
+  margin-top: 28px;
+  margin-bottom: 6px;
+}
+
+.list-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #151823;
+}
+
+.btn-view-all {
+  border: none;
+  background: none;
+  font-size: 14px;
+  color: #151823;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+
+/* ===== TABLE HEADER ===== */
+
+.table-head {
+  background: #f3f6fb;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #a1a6af;
+  margin-bottom: 4px;
+}
+
+.col-job {
+  flex: 1.5;
+}
+
+.col-status {
+  flex: 0.9;
+}
+
+.col-app {
+  flex: 1.1;
+}
+
+.col-actions {
+  flex: 1;
+  text-align: right;
+}
+
+
+/* ===== ROWS ===== */
+
+.table-row {
+  background: #ffffff;
+  padding: 14px 16px;
+  border-bottom: 1px solid #e5e9f0;
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
+.job-title {
+  font-weight: 600;
+  color: #191c27;
+}
+
+.job-sub {
+  font-size: 12px;
+  color: #8b909b;
+  margin-top: 2px;
+
+  span {
+    padding: 0 6px;
+  }
+}
+
+/* status icon + text */
+.status-icon {
+  color: #33c24d;
+  font-size: 18px;
+}
+
+.status-text {
+  color: #33c24d;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* applications */
+.apps-icon {
+  color: #7b818d;
+}
+
+/* button View Applications */
+.btn-app {
+  background: #1c57e2;
+  border: none;
+  color: #ffffff;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+
+/* ===========================
+   RESPONSIVE BODY
+=========================== */
+
+@media (max-width: 991.98px) {
+  .dashboard-wrapper {
+    padding: 20px 16px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .table-head {
+    display: none !important;
+  }
+
+  .table-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .col-actions {
+    width: 100%;
+    text-align: left;
+  }
+
+  .btn-app {
+    width: 100%;
+  }
+}
+

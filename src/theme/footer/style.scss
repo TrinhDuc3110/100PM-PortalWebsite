@@ -1,0 +1,160 @@
+@use "sass:map";
+
+.footer {
+  background-color: #121212;
+  color: #cfcfcf;
+  padding: 30px 0;
+  font-family: "Roboto", sans-serif;
+  width: 100%; // đảm bảo block full theo cha
+
+  .container {
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr; // 5 cột desktop
+    column-gap: 60px;
+    align-items: start;
+  }
+
+  // Cột 1 (Logo + thông tin)
+  .footer_logo {
+    color: #fff;
+    font-size: 20px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    i {
+      font-size: 18px;
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      font-size: 14px;
+      line-height: 1.8;
+      color: #cfcfcf;
+      transition: color 0.3s ease;
+      margin-bottom: 6px;
+      white-space: normal;       // cho text tự xuống dòng
+      word-wrap: break-word;     // tránh tràn khỏi cột
+
+      span {
+        color: #fff;
+      }
+
+      .arrow {
+        font-size: 10px;
+        margin-right: 6px;
+        color: #fff;
+      }
+
+      &:hover {
+        color: #fff;
+        cursor: pointer;
+      }
+    }
+  }
+
+  // Tiêu đề cột
+  h4 {
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 18px;
+    font-weight: 600;
+  }
+}
+
+/* Footer bottom */
+.footer_bottom {
+  border-top: 1px solid #2a2a2a;
+  margin-top: 10px;
+  padding: 0;
+
+  .footer_bottom_container {
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 8px 15px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #9a9a9a;
+    font-size: 0.9rem;
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+
+  .footer_socials {
+    display: flex;
+    gap: 16px;
+
+    svg {
+      font-size: 15px;
+      color: #9a9a9a;
+      transition: color 0.3s;
+
+      &:hover {
+        color: #fff;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+/* ========== RESPONSIVE CHO GIỐNG FIGMA ========== */
+
+/* Tablet lớn: 3 cột trên, 2 cột dưới */
+@media (max-width: 1199.98px) {
+  .footer {
+    .row {
+      grid-template-columns: 1.5fr 1fr 1fr; // 3 cột
+      row-gap: 24px;
+    }
+
+    // 2 cột cuối xuống hàng dưới
+    .footer_col:nth-child(4),
+    .footer_col:nth-child(5) {
+      margin-top: 8px;
+    }
+  }
+}
+
+/* Tablet / mobile ngang: 2 cột 1 hàng */
+@media (max-width: 767.98px) {
+  .footer {
+    .row {
+      grid-template-columns: 1fr 1fr; // 2 cột
+      column-gap: 30px;
+      row-gap: 24px;
+    }
+  }
+}
+
+/* Mobile nhỏ: mỗi cột 1 hàng */
+@media (max-width: 575.98px) {
+  .footer {
+    .row {
+      grid-template-columns: 1fr; // 1 cột
+      row-gap: 20px;
+    }
+  }
+
+  .footer_bottom_container {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .footer_socials {
+    justify-content: center;
+  }
+}

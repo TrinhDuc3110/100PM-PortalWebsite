@@ -1,0 +1,221 @@
+/* ========== SIDEBAR ========== */
+
+.emp-sidebar-wrapper {
+  background: #ffffff;
+  min-height: 100%;
+}
+
+.emp-sidebar {
+  padding: 20px 18px;
+  font-size: 13px;
+}
+
+.emp-sidebar-title {
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: #555;
+  margin-bottom: 18px;
+}
+
+.emp-sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.emp-sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  margin-bottom: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #1d1e23;
+  font-size: 13px;
+
+  &:hover {
+    background: #f3f7ff;
+  }
+}
+
+.emp-sidebar-item.active {
+  background: #e7f0ff;
+}
+
+.emp-icon {
+  font-size: 18px;
+}
+
+/* RESPONSIVE: sidebar full-width trên mobile */
+@media (max-width: 767.98px) {
+  .emp-sidebar-wrapper {
+    border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 12px;
+  }
+}
+
+/* ===========================
+   POST A JOB — BODY PHẢI
+=========================== */
+
+.postjob-wrapper {
+  padding: 24px 32px;
+  background: #ffffff;
+}
+
+.postjob-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #151823;
+  margin-bottom: 24px;
+}
+
+/* label nhỏ xám */
+.postjob-label {
+  font-size: 13px;
+  color: #686f7a;
+}
+
+/* group caption như "Salary", "Advance Information" */
+.postjob-section-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #151823;
+  margin-bottom: 6px;
+}
+
+/* location box xám nhạt */
+.postjob-location-box {
+  background: #f5f7fb;
+  border-radius: 12px;
+  padding: 16px 18px;
+  border: 1px solid #e0e4f0;
+}
+
+.postjob-remote-label {
+  font-size: 13px;
+  color: #2d3553;
+  margin-left: 4px;
+}
+
+/* ===========================
+   Job Benefits (chips)
+=========================== */
+
+.postjob-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.postjob-tag {
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid #d1d6e3;
+  background: #ffffff;
+  font-size: 12px;
+  color: #4b5160;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+/* hover chuyển viền + chữ xanh, nền nhạt */
+.postjob-tag:hover {
+  border-color: #1c57e2;
+  color: #1c57e2;
+  background: #eef4ff;
+}
+
+/* khi được chọn (active) thì nền xanh, chữ trắng */
+.postjob-tag.active {
+  background: #1c57e2;
+  color: #ffffff;
+  border-color: #1c57e2;
+}
+
+/* ===========================
+   Apply options cards
+=========================== */
+
+.postjob-apply-options {
+  .postjob-apply-card {
+    border-radius: 12px;
+    border: 1px solid #dde2ee;
+    padding: 12px 14px;
+    background: #ffffff;
+    height: 100%;
+    transition: 0.15s ease;
+  }
+
+  /* ❌ bỏ viền xanh & shadow của ô active */
+  .postjob-apply-card.active {
+    border-color: #dde2ee;
+    box-shadow: none;
+  }
+
+  .postjob-apply-card:hover {
+    border-color: #c2cae5;
+  }
+
+  .postjob-apply-text {
+    font-size: 12px;
+    color: #7c8190;
+    margin-top: 6px;
+  }
+}
+
+/* nút Post Job */
+.postjob-submit-btn {
+  margin-top: 4px;
+  padding-inline: 26px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* ===========================
+   TUNE input Bootstrap cho giống figma
+=========================== */
+
+.postjob-wrapper .form-control,
+.postjob-wrapper .form-select {
+  font-size: 13px;
+  border-radius: 8px;
+  border-color: #d7dbe7;
+}
+
+.postjob-wrapper .form-control::placeholder {
+  color: #b4b9c4;
+  font-size: 13px;
+}
+
+/* input-group currency */
+.postjob-wrapper .input-group-text {
+  border-radius: 0 8px 8px 0;
+  font-size: 12px;
+  color: #6d7280;
+}
+
+/* radio/checkbox */
+.postjob-wrapper .form-check-input {
+  width: 16px;
+  height: 16px;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width: 991.98px) {
+  .postjob-wrapper {
+    padding: 20px 16px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .postjob-title {
+    font-size: 20px;
+  }
+}

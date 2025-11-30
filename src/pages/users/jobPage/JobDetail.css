@@ -1,0 +1,378 @@
+/* ===== TOP BAR: JOB DETAILS + BREADCRUMB ===== */
+.job-detail-topbar {
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 14px 0;
+}
+
+.job-detail-topbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.job-detail-topbar__title {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* breadcrumb bên phải */
+.job-detail-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.job-detail-breadcrumb a {
+  color: #6b7280;
+  text-decoration: none;
+}
+
+.job-detail-breadcrumb a:hover {
+  color: #2563eb;
+}
+
+.job-detail-breadcrumb .separator {
+  color: #9ca3af;
+}
+
+.job-detail-breadcrumb .current {
+  color: #111827;
+  font-weight: 500;
+}
+
+/* ===== MAIN PAGE ===== */
+.job-detail-page {
+  background: #ffffff; /* trắng toàn trang */
+}
+
+/* khối trắng chứa toàn bộ nội dung chính */
+.job-detail-shell {
+  background: #ffffff;
+  padding: 32px 0 60px;
+}
+
+/* HEADER */
+.job-detail-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.job-detail-header-left {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+/* logo facebook tròn */
+.job-detail-logo {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.job-detail-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.job-detail-title {
+  font-size: 26px;
+  margin: 0 0 6px;
+}
+
+.job-detail-title-block {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hàng: at Facebook + badge */
+.job-detail-company-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.job-detail-company {
+  margin: 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.job-detail-company span {
+  font-weight: 600;
+  color: #111827;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* FULL-TIME – nền xanh lá, chữ trắng */
+.badge-type {
+  background: #16a34a;
+  color: #ffffff;
+}
+
+/* Featured – nền hồng nhạt, chữ đỏ */
+.badge-featured {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+/* Header right: bookmark + apply */
+.job-detail-header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* ô tròn chứa icon bookmark */
+.bookmark-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: #f3f4ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+.bookmark-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+/* trạng thái bookmark đã lưu */
+.bookmark-btn.is-saved {
+  background: #2563eb;
+  border-color: #2563eb;
+}
+
+.bookmark-btn.is-saved img {
+  /* biến icon png sang trắng để nổi trên nền xanh */
+  filter: brightness(0) invert(1);
+}
+
+
+/* nút Apply Now to, ít bo góc */
+.apply-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 40px;
+  border-radius: 10px;
+  border: none;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
+}
+
+.apply-arrow {
+  font-size: 18px;
+}
+
+/* LAYOUT */
+.job-detail-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.1fr);
+  gap: 24px;
+}
+
+/* LEFT */
+.job-detail-left {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px 24px 28px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+  font-size: 14px;
+  line-height: 1.6;
+  color: #4b5563;
+}
+
+.section-title {
+  font-size: 16px;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.sub-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+
+.dot-list {
+  padding-left: 18px;
+  margin: 0 0 8px;
+}
+
+/* RIGHT */
+.job-detail-right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.detail-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 16px 18px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+.salary-card {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.salary-col {
+  flex: 1;
+}
+
+.divider {
+  width: 1px;
+  background: #e5e7eb;
+}
+
+.card-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #9ca3af;
+  margin: 0 0 4px;
+}
+
+.salary-value {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #059669;
+}
+
+.salary-note {
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.card-main-text {
+  margin: 0;
+  font-size: 13px;
+  color: #111827;
+}
+
+.card-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+
+/* OVERVIEW */
+.overview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 12px;
+}
+
+.overview-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.overview-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: #eff6ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2563eb;
+}
+
+/* SHARE */
+.share-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.copy-link-btn {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  border: 1px solid #2563eb;
+  color: #2563eb;
+  background: #eff6ff;
+  cursor: pointer;
+}
+
+.share-icons {
+  display: flex;
+  gap: 6px;
+}
+
+.share-icon-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  border: none;
+  background: #eff6ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #2563eb;
+}
+
+/* nhỏ hơn ~900px thì cho 1 cột */
+@media (max-width: 900px) {
+  .job-detail-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .job-detail-topbar__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .job-detail-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .job-detail-header-right {
+    align-self: flex-end;
+  }
+}
