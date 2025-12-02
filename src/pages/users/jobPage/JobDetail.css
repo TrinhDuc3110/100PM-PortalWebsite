@@ -1,66 +1,72 @@
-/* ===== TOP BAR: JOB DETAILS + BREADCRUMB ===== */
+/* ============== JOB DETAIL PAGE ============== */
+
+.job-detail-page {
+  background-color: #f4f6fb;
+  padding-bottom: 60px;
+  min-height: 100vh;
+  font-family: inherit;
+}
+
+/* Topbar: title + breadcrumb */
+
 .job-detail-topbar {
-  background: #f9fafb;
-  border-bottom: 1px solid #e5e7eb;
-  padding: 14px 0;
+  border-bottom: 1px solid #e5e7f0;
+  background-color: #ffffff;
 }
 
 .job-detail-topbar__inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 16px 0;
 }
 
 .job-detail-topbar__title {
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 600;
   margin: 0;
 }
 
-/* breadcrumb bên phải */
 .job-detail-breadcrumb {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 14px;
-  color: #6b7280;
+  font-size: 13px;
+  color: #8f95a3;
 }
 
 .job-detail-breadcrumb a {
-  color: #6b7280;
+  color: #8f95a3;
   text-decoration: none;
 }
 
 .job-detail-breadcrumb a:hover {
-  color: #2563eb;
+  color: #1d61e7;
 }
 
 .job-detail-breadcrumb .separator {
-  color: #9ca3af;
+  margin: 0 6px;
 }
 
 .job-detail-breadcrumb .current {
-  color: #111827;
-  font-weight: 500;
+  color: #181a2a;
 }
 
-/* ===== MAIN PAGE ===== */
-.job-detail-page {
-  background: #ffffff; /* trắng toàn trang */
-}
+/* Main shell */
 
-/* khối trắng chứa toàn bộ nội dung chính */
 .job-detail-shell {
-  background: #ffffff;
-  padding: 32px 0 60px;
+  max-width: 1120px;
+  margin: 24px auto 0;
 }
 
-/* HEADER */
+/* Header area */
+
 .job-detail-header {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 18px 20px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  margin-bottom: 32px;
+  box-shadow: 0 12px 25px rgba(15, 35, 52, 0.06);
+  margin-bottom: 18px;
 }
 
 .job-detail-header-left {
@@ -69,170 +75,239 @@
   align-items: center;
 }
 
-/* logo facebook tròn */
-.job-detail-logo {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .job-detail-logo img {
-  width: 100%;
-  height: 100%;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
   object-fit: cover;
-}
-
-.job-detail-title {
-  font-size: 26px;
-  margin: 0 0 6px;
 }
 
 .job-detail-title-block {
   display: flex;
   flex-direction: column;
+  gap: 4px;
 }
 
-/* Hàng: at Facebook + badge */
+.job-detail-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+
 .job-detail-company-row {
   display: flex;
   align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 13px;
 }
 
 .job-detail-company {
   margin: 0;
-  font-size: 14px;
-  color: #6b7280;
+  color: #6c7283;
 }
 
 .job-detail-company span {
   font-weight: 600;
-  color: #111827;
+  color: #181a2a;
 }
+
+/* badges */
 
 .badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 4px 12px;
-  border-radius: 999px;
   font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 999px;
   font-weight: 600;
-  line-height: 1;
-  white-space: nowrap;
 }
 
-/* FULL-TIME – nền xanh lá, chữ trắng */
 .badge-type {
-  background: #16a34a;
-  color: #ffffff;
+  background-color: #e8f6ff;
+  color: #0d6efd;
 }
 
-/* Featured – nền hồng nhạt, chữ đỏ */
 .badge-featured {
-  background: #fee2e2;
-  color: #b91c1c;
+  background-color: #fff2d9;
+  color: #c58900;
 }
 
-/* Header right: bookmark + apply */
+/* header right */
+
 .job-detail-header-right {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 10px;
 }
 
-/* ô tròn chứa icon bookmark */
 .bookmark-btn {
-  width: 48px;
-  height: 48px;
+  width: 38px;
+  height: 38px;
   border-radius: 999px;
-  border: 1px solid #e5e7eb;
-  background: #f3f4ff;
+  border: 1px solid #e2e6f2;
+  background-color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  padding: 0;
 }
 
 .bookmark-btn img {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
 }
 
-/* trạng thái bookmark đã lưu */
 .bookmark-btn.is-saved {
-  background: #2563eb;
+  background-color: #e4f0ff;
+  border-color: #0d6efd;
+}
+
+/* ============ APPLY MODAL ============ */
+.apply-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.apply-modal {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.18);
+  width: 520px;
+  max-width: calc(100% - 32px);
+  padding: 20px 24px 22px;
+  position: relative;
+}
+
+.apply-modal-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.apply-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  color: #64748b;
+}
+
+.apply-form .form-group {
+  margin-bottom: 16px;
+}
+
+.apply-form .form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #0f172a;
+  margin-bottom: 6px;
+}
+
+.apply-form .form-select,
+.apply-form .form-textarea {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  font-size: 14px;
+  padding: 8px 10px;
+  outline: none;
+}
+
+.apply-form .form-select:focus,
+.apply-form .form-textarea:focus {
   border-color: #2563eb;
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.15);
 }
 
-.bookmark-btn.is-saved img {
-  /* biến icon png sang trắng để nổi trên nền xanh */
-  filter: brightness(0) invert(1);
+.apply-actions {
+  margin-top: 8px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
 }
 
+.apply-actions .cancel-btn {
+  min-width: 90px;
+}
 
-/* nút Apply Now to, ít bo góc */
+.apply-actions .apply-submit {
+  min-width: 110px;
+}
+
 .apply-btn {
+  border-radius: 8px;
+  border: none;
+  background-color: #0d6efd;
+  color: #ffffff;
+  padding: 10px 18px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 14px 40px;
-  border-radius: 10px;
-  border: none;
-  background: #2563eb;
-  color: #ffffff;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
-  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
 }
 
 .apply-arrow {
-  font-size: 18px;
+  font-size: 16px;
 }
 
-/* LAYOUT */
+/* Layout: left + right */
+
 .job-detail-layout {
   display: grid;
-  grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.1fr);
-  gap: 24px;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.2fr);
+  gap: 20px;
 }
 
-/* LEFT */
+/* LEFT: description */
+
 .job-detail-left {
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 24px 24px 28px;
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
-  font-size: 14px;
-  line-height: 1.6;
-  color: #4b5563;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 20px 22px;
+  box-shadow: 0 12px 25px rgba(15, 35, 52, 0.04);
 }
 
 .section-title {
   font-size: 16px;
-  margin-top: 0;
-  margin-bottom: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.job-detail-left p {
+  font-size: 14px;
+  color: #4b5264;
+  line-height: 1.6;
 }
 
 .sub-title {
   font-size: 15px;
   font-weight: 600;
-  margin-top: 20px;
-  margin-bottom: 8px;
+  margin: 18px 0 8px;
 }
 
 .dot-list {
   padding-left: 18px;
-  margin: 0 0 8px;
+  margin: 0;
 }
 
-/* RIGHT */
+.dot-list li {
+  font-size: 14px;
+  color: #4b5264;
+  margin-bottom: 6px;
+}
+
+/* RIGHT: sidebar generic cards */
+
 .job-detail-right {
   display: flex;
   flex-direction: column;
@@ -240,139 +315,339 @@
 }
 
 .detail-card {
-  background: #ffffff;
-  border-radius: 16px;
+  background-color: #ffffff;
+  border-radius: 12px;
   padding: 16px 18px;
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+  box-shadow: 0 12px 25px rgba(15, 35, 52, 0.04);
 }
+
+.card-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+
+.card-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #8f95a3;
+  margin: 0 0 4px;
+}
+
+.card-main-text {
+  font-size: 13px;
+  color: #202334;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* ========= SALARY CARD ========= */
 
 .salary-card {
   display: flex;
-  align-items: stretch;
+  align-items: center;
   justify-content: space-between;
-  gap: 12px;
 }
 
 .salary-col {
   flex: 1;
 }
 
-.divider {
-  width: 1px;
-  background: #e5e7eb;
+/* Bên trái: Salary */
+
+.salary-left {
+  text-align: left;
 }
 
-.card-label {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: #9ca3af;
+.salary-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #202334;
   margin: 0 0 4px;
+  text-transform: none;
+  letter-spacing: 0;
 }
 
 .salary-value {
-  margin: 0;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 600;
-  color: #059669;
+  color: #16a34a; /* xanh lá giống Figma */
+  margin: 0 0 4px;
 }
 
 .salary-note {
-  margin: 2px 0 0;
   font-size: 12px;
-  color: #9ca3af;
-}
-
-.card-main-text {
+  color: #8f95a3;
   margin: 0;
+}
+
+/* Divider giữa 2 cột */
+
+.salary-card .divider {
+  width: 1px;
+  height: 64px;
+  background-color: #e3e6f2;
+  margin: 0 24px;
+}
+
+/* Bên phải: Job Location + icon map */
+
+.location-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+}
+
+.location-icon {
+  font-size: 26px;
+  color: #1d61e7; /* xanh dương giống Figma */
+}
+
+.location-text {
   font-size: 13px;
-  color: #111827;
+  color: #8f95a3;
+  margin: 0;
 }
 
-.card-title {
-  font-size: 14px;
-  font-weight: 600;
-  margin: 0 0 12px;
-}
+/* ========= OVERVIEW CARD ========= */
 
-/* OVERVIEW */
-.overview-grid {
+.overview-card .overview-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 24px;
 }
 
 .overview-item {
   display: flex;
-  gap: 10px;
   align-items: flex-start;
+  gap: 10px;
 }
 
 .overview-icon {
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   border-radius: 999px;
-  background: #eff6ff;
+  background-color: #eef4ff;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #2563eb;
+  color: #2155cd;
+  font-size: 18px;
+  flex-shrink: 0;
 }
 
-/* SHARE */
+/* ========== SHARE THIS JOB ========== */
+
+.share-card {
+  margin-top: 4px;
+}
+
+.share-card .card-title {
+  margin-bottom: 12px;
+}
+
 .share-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 12px;
+}
+
+/* Nút Copy Links giống Figma */
+.share-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: none;
+  background-color: #e9f2ff;   /* nền xanh nhạt */
+  color: #1d61e7;              /* chữ + icon xanh */
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.share-copy-btn .share-copy-icon {
+  font-size: 16px;
+}
+
+/* Nhóm icon chia sẻ */
+.share-icons {
+  display: flex;
+  align-items: center;
   gap: 8px;
 }
 
-.copy-link-btn {
-  padding: 6px 14px;
-  border-radius: 999px;
-  font-size: 12px;
-  border: 1px solid #2563eb;
-  color: #2563eb;
-  background: #eff6ff;
-  cursor: pointer;
-}
-
-.share-icons {
-  display: flex;
-  gap: 6px;
-}
-
-.share-icon-btn {
-  width: 28px;
-  height: 28px;
-  border-radius: 999px;
+/* Ô vuông icon (LinkedIn, FB, X, mail) */
+.share-card .share-icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;          /* vuông bo nhẹ */
   border: none;
-  background: #eff6ff;
+  background-color: #eef4ff;   /* xanh nhạt */
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #1d61e7;
   cursor: pointer;
-  color: #2563eb;
+  font-size: 16px;
 }
 
-/* nhỏ hơn ~900px thì cho 1 cột */
-@media (max-width: 900px) {
-  .job-detail-layout {
-    grid-template-columns: 1fr;
-  }
+/* ========== RELATED JOBS ========== */
 
-  .job-detail-topbar__inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
-  }
+.related-jobs-section {
+  max-width: 1120px;
+  margin: 32px auto 40px;
+}
 
+.related-jobs-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.related-jobs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.related-job-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 14px 16px;
+  box-shadow: 0 12px 25px rgba(15, 35, 52, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.related-job-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.related-job-link:hover .related-job-card {
+  box-shadow: 0 16px 30px rgba(15, 35, 52, 0.08);
+  transform: translateY(-2px);
+  transition: 0.15s ease;
+}
+
+
+/* top row */
+
+.related-job-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+}
+
+.related-job-type {
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+/* màu type */
+
+.related-job-type--part-time {
+  background-color: #e8f6ff;
+  color: #0d6efd;
+}
+
+.related-job-type--full-time {
+  background-color: #e6f4ea;
+  color: #16a34a;
+}
+
+.related-job-type--internship {
+  background-color: #fff7e6;
+  color: #c58900;
+}
+
+.related-job-salary {
+  color: #8f95a3;
+}
+
+/* main row */
+
+.related-job-main {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.related-job-logo img {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.related-job-info {
+  flex: 1;
+}
+
+.related-job-title {
+  font-size: 14px;
+  margin: 0 0 4px;
+  font-weight: 600;
+}
+
+.related-job-company {
+  font-size: 12px;
+  margin: 0;
+  color: #4b5264;
+}
+
+.related-job-location {
+  font-size: 12px;
+  margin: 2px 0 0;
+  color: #8f95a3;
+}
+
+.related-job-bookmark {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 4px;
+}
+
+.related-job-bookmark img {
+  width: 16px;
+  height: 16px;
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 992px) {
   .job-detail-header {
     flex-direction: column;
     align-items: flex-start;
+    gap: 12px;
   }
 
   .job-detail-header-right {
     align-self: flex-end;
+  }
+
+  .job-detail-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .related-jobs-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 576px) {
+  .related-jobs-grid {
+    grid-template-columns: 1fr;
   }
 }

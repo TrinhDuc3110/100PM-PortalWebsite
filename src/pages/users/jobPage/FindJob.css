@@ -116,6 +116,205 @@
   object-fit: contain;
 }
 
+/* ================= FILTER SIDE PANEL ================= */
+
+.fj-filter-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  z-index: 50;
+}
+
+/* Panel trượt từ trái */
+.fj-filter-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 320px;
+  max-width: 80%;
+  background: #ffffff;
+  z-index: 51;
+  box-shadow: 4px 0 24px rgba(15, 23, 42, 0.12);
+  padding: 20px 18px 16px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  animation: fj-slide-in 0.25s ease-out;
+  font-family: inherit;
+}
+
+@keyframes fj-slide-in {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.fj-filter-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.fj-filter-header h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.fj-filter-close {
+  border: none;
+  background: transparent;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  color: #64748b;
+}
+
+.fj-filter-section {
+  margin-bottom: 18px;
+}
+
+.fj-filter-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #94a3b8;
+  margin-bottom: 6px;
+}
+
+.fj-filter-title {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #0f172a;
+}
+
+.fj-filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.fj-chip {
+  font-size: 11px;
+  padding: 4px 8px;
+  background: #e0edff;
+  color: #1d4ed8;
+  border-radius: 999px;
+}
+
+/* Industry list */
+.fj-filter-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.fj-filter-list li {
+  padding: 6px 10px;
+  font-size: 13px;
+  cursor: pointer;
+  color: #475569;
+}
+
+.fj-filter-list li.active {
+  background: #e0edff;
+  color: #1d4ed8;
+  font-weight: 600;
+}
+
+.fj-filter-list li + li {
+  border-top: 1px solid #e2e8f0;
+}
+
+/* Radios chung */
+.fj-filter-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fj-filter-radio-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #475569;
+  cursor: pointer;
+}
+
+.fj-filter-radio-group input[type="radio"] {
+  accent-color: #2563eb;
+}
+
+/* Salary */
+.fj-filter-salary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 6px;
+}
+
+.fj-filter-range {
+  width: 100%;
+  margin: 4px 0 8px;
+}
+
+.fj-filter-salary-options {
+  gap: 4px;
+}
+
+/* Footer */
+.fj-filter-footer {
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fj-filter-remote {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #475569;
+}
+
+.fj-filter-remote input[type="checkbox"] {
+  accent-color: #2563eb;
+}
+
+.fj-apply-filter-btn {
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 0;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.fj-apply-filter-btn:hover {
+  background: #1d4ed8;
+}
+
+/* responsive: panel rộng hơn chút trên mobile */
+@media (max-width: 575px) {
+  .fj-filter-panel {
+    width: 85%;
+  }
+}
 
 /* Content */
 .find-job-content {

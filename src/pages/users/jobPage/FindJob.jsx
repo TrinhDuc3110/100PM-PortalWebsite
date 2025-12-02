@@ -498,7 +498,28 @@ const ALL_JOBS = [
   },
 ];
 
+// =============== HELPERS: PARSE & MAP SALARY =================
+const parseSalaryRangeK = (salaryStr) => {
+  // "$20,000 - $25,000" -> { minK: 20, maxK: 25 }
+  const match = salaryStr.match(/\$?([\d,]+)\s*-\s*\$?([\d,]+)/);
+  if (!match) return { minK: 0, maxK: Infinity };
+  const min = parseInt(match[1].replace(/,/g, ""), 10) / 1000;
+  const max = parseInt(match[2].replace(/,/g, ""), 10) / 1000;
+  return { minK: min, maxK: max };
+};
 
+const getSalaryRangeFromFilter = (filterValue) => {
+  switch (filterValue) {
+    case "10-30":
+      return { min: 10, max: 30 };
+    case "30-50":
+      return { min: 30, max: 50 };
+    case "50-80":
+      return { min: 50, max: 80 };
+    default:
+      return null; // không lọc theo lương
+  }
+};
 
 // ======================= COMPONENT =======================
 const FindJob = () => {
@@ -507,24 +528,86 @@ const FindJob = () => {
   const [jobs, setJobs] = useState(ALL_JOBS);
   const [page, setPage] = useState(1);
 
-  // Submit search -> lọc trên ALL_JOBS
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  // panel mở / đóng
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
-    const kw = keyword.toLowerCase().trim();
-    const loc = location.toLowerCase().trim();
+  // filter đã apply
+  const [jobTypeFilter, setJobTypeFilter] = useState(null);      // FULL-TIME, PART-TIME, ...
+  const [salaryFilter, setSalaryFilter] = useState(null);        // "10-30" | "30-50" | "50-80"
+  const [remoteOnly, setRemoteOnly] = useState(false);           // chỉ job remote
 
-    const filtered = ALL_JOBS.filter((job) => {
+  // giá trị đang chỉnh trong panel (chưa bấm Apply Filter)
+  const [jobTypeDraft, setJobTypeDraft] = useState("FULL-TIME");
+  const [salaryDraft, setSalaryDraft] = useState("50-80");
+  const [remoteDraft, setRemoteDraft] = useState(false);
+
+  const openFilter = () => {
+    // đồng bộ draft với filter đã apply trước đó
+    setJobTypeDraft(jobTypeFilter || "FULL-TIME");
+    setSalaryDraft(salaryFilter || "50-80");
+    setRemoteDraft(remoteOnly);
+    setIsFilterOpen(true);
+  };
+  const closeFilter = () => setIsFilterOpen(false);
+
+  // Hàm filter chung: sử dụng cho cả Find Job & Apply Filter
+  const filterJobs = (kwInput, locInput, overrides = {}) => {
+    const kw = kwInput.toLowerCase().trim();
+    const loc = locInput.toLowerCase().trim();
+
+    const typeFilter = overrides.jobType ?? jobTypeFilter;
+    const salaryFilterValue = overrides.salary ?? salaryFilter;
+    const remoteFilter = overrides.remote ?? remoteOnly;
+
+    const salaryRange = getSalaryRangeFromFilter(salaryFilterValue);
+
+    return ALL_JOBS.filter((job) => {
       const matchKw =
         !kw ||
         job.title.toLowerCase().includes(kw) ||
         job.company.toLowerCase().includes(kw);
+
       const matchLoc = !loc || job.location.toLowerCase().includes(loc);
-      return matchKw && matchLoc;
+
+      const matchType = !typeFilter || job.type === typeFilter;
+
+      // lọc theo lương
+      const { minK, maxK } = parseSalaryRangeK(job.salary);
+      const matchSalary =
+        !salaryRange ||
+        (minK >= salaryRange.min && maxK <= salaryRange.max);
+
+      // fake remote: cho các job id chẵn là remote
+      const isRemoteJob = job.id % 2 === 0;
+      const matchRemote = !remoteFilter || isRemoteJob;
+
+      return matchKw && matchLoc && matchType && matchSalary && matchRemote;
+    });
+  };
+
+  // Submit search -> lọc với keyword + location + filter đã apply
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const filtered = filterJobs(keyword, location);
+    setJobs(filtered);
+    setPage(1);
+  };
+
+  // Khi bấm Apply Filter trong side panel
+  const handleApplyFilter = () => {
+    setJobTypeFilter(jobTypeDraft);
+    setSalaryFilter(salaryDraft);
+    setRemoteOnly(remoteDraft);
+
+    const filtered = filterJobs(keyword, location, {
+      jobType: jobTypeDraft,
+      salary: salaryDraft,
+      remote: remoteDraft,
     });
 
     setJobs(filtered);
     setPage(1);
+    closeFilter();
   };
 
   const totalPages = Math.max(1, Math.ceil(jobs.length / PAGE_SIZE));
@@ -577,7 +660,7 @@ const FindJob = () => {
             <button
               type="button"
               className="btn btn-outline filter-btn"
-              onClick={() => alert("Filter modal / drawer here")}
+              onClick={openFilter}
             >
               <span className="filter-btn__icon">
                 <img src={slidersIcon} alt="Filters" />
@@ -634,6 +717,190 @@ const FindJob = () => {
           </div>
         </div>
       </section>
+
+      {/* ============ FILTER SIDE PANEL ============ */}
+      {isFilterOpen && (
+        <>
+          {/* overlay mờ toàn màn hình */}
+          <div className="fj-filter-overlay" onClick={closeFilter} />
+
+          {/* panel trượt từ bên trái */}
+          <aside className="fj-filter-panel">
+            <div className="fj-filter-header">
+              <h2>Filter</h2>
+              <button
+                type="button"
+                className="fj-filter-close"
+                onClick={closeFilter}
+              >
+                ×
+              </button>
+            </div>
+
+            {/* Active filters */}
+            <div className="fj-filter-section">
+              <p className="fj-filter-label">Active filters:</p>
+              <div className="fj-filter-chips">
+                {jobTypeFilter && (
+                  <span className="fj-chip">Job: {jobTypeFilter}</span>
+                )}
+                {salaryFilter && (
+                  <span className="fj-chip">Salary: {salaryFilter}k</span>
+                )}
+                {remoteOnly && <span className="fj-chip">Remote only</span>}
+              </div>
+            </div>
+
+            {/* Industry (vẫn demo, chưa lọc theo industry) */}
+            <div className="fj-filter-section">
+              <p className="fj-filter-title">Industry</p>
+              <ul className="fj-filter-list">
+                <li className="active">All Category</li>
+                <li>Development</li>
+                <li>Finance &amp; Accounting</li>
+                <li>IT &amp; Software</li>
+                <li>Design</li>
+                <li>Marketing</li>
+                <li>Photography &amp; Video</li>
+              </ul>
+            </div>
+
+            {/* Job Title – lọc thật theo type */}
+            <div className="fj-filter-section">
+              <p className="fj-filter-title">Job Title</p>
+              <div className="fj-filter-radio-group">
+                <label>
+                  <input
+                    type="radio"
+                    name="fj-jobtype"
+                    value="FULL-TIME"
+                    checked={jobTypeDraft === "FULL-TIME"}
+                    onChange={(e) => setJobTypeDraft(e.target.value)}
+                  />
+                  <span>Full time</span>
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="fj-jobtype"
+                    value="PART-TIME"
+                    checked={jobTypeDraft === "PART-TIME"}
+                    onChange={(e) => setJobTypeDraft(e.target.value)}
+                  />
+                  <span>Part-time</span>
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="fj-jobtype"
+                    value="INTERNSHIP"
+                    checked={jobTypeDraft === "INTERNSHIP"}
+                    onChange={(e) => setJobTypeDraft(e.target.value)}
+                  />
+                  <span>Internship</span>
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="fj-jobtype"
+                    value="TEMPORARY"
+                    checked={jobTypeDraft === "TEMPORARY"}
+                    onChange={(e) => setJobTypeDraft(e.target.value)}
+                  />
+                  <span>Temporary</span>
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="fj-jobtype"
+                    value="CONTRACT"
+                    checked={jobTypeDraft === "CONTRACT"}
+                    onChange={(e) => setJobTypeDraft(e.target.value)}
+                  />
+                  <span>Contract Base</span>
+                </label>
+              </div>
+            </div>
+
+            {/* Salary – lọc thật theo khoảng */}
+            <div className="fj-filter-section">
+              <p className="fj-filter-title">Salary (yearly)</p>
+              <div className="fj-filter-salary-row">
+                <span>Min: $10k</span>
+                <span>Max: $80k</span>
+              </div>
+              <input
+                type="range"
+                min="0"
+                max="100"
+                defaultValue="60"
+                className="fj-filter-range"
+              />
+              <div className="fj-filter-radio-group fj-filter-salary-options">
+                <label>
+                  <input
+                    type="radio"
+                    name="fj-salary"
+                    value="10-30"
+                    checked={salaryDraft === "10-30"}
+                    onChange={(e) => setSalaryDraft(e.target.value)}
+                  />
+                  <span>$10–$30k</span>
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="fj-salary"
+                    value="30-50"
+                    checked={salaryDraft === "30-50"}
+                    onChange={(e) => setSalaryDraft(e.target.value)}
+                  />
+                  <span>$30–$50k</span>
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="fj-salary"
+                    value="50-80"
+                    checked={salaryDraft === "50-80"}
+                    onChange={(e) => setSalaryDraft(e.target.value)}
+                  />
+                  <span>$50–$80k</span>
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="fj-salary"
+                    value=""
+                    checked={salaryDraft === ""}
+                    onChange={(e) => setSalaryDraft(e.target.value)}
+                  />
+                  <span>Custom / None</span>
+                </label>
+              </div>
+            </div>
+
+            {/* Footer: remote + apply */}
+            <div className="fj-filter-footer">
+              <label className="fj-filter-remote">
+                <input
+                  type="checkbox"
+                  checked={remoteDraft}
+                  onChange={(e) => setRemoteDraft(e.target.checked)}
+                />
+                <span>Remote Job</span>
+              </label>
+              <button
+                type="button"
+                className="fj-apply-filter-btn"
+                onClick={handleApplyFilter}
+              >
+                Apply Filter
+              </button>
+            </div>
+          </aside>
+        </>
+      )}
     </main>
   );
 };
