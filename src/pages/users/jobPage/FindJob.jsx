@@ -888,7 +888,7 @@ const FindJob = () => {
                   checked={remoteDraft}
                   onChange={(e) => setRemoteDraft(e.target.checked)}
                 />
-                <span>Remote Job</span>
+                <span>Remote Job </span>
               </label>
               <button
                 type="button"
